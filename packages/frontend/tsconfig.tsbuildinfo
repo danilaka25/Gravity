@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/config.ts","./src/main.tsx","./src/components/addjarform.tsx","./src/components/jarlist.tsx"],"errors":true,"version":"5.9.3"}
+{"root":["./src/app.tsx","./src/config.ts","./src/main.tsx","./src/components/addjarform.tsx","./src/components/jarlist.tsx"],"version":"5.9.3"}
