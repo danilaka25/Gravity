@@ -9,6 +9,9 @@ type Jar = {
   authorNickname: string;
   jarUrl: string;
   createdAt: string;
+  accumulated?: string | null;
+  goal?: string | null;
+  lastStatsUpdate?: string | null;
 };
 
 function App() {

@@ -3,23 +3,16 @@ import { MonobankService } from './monobank.service';
 
 @Controller('monobank')
 export class MonobankController {
-  constructor(private readonly monobankService: MonobankService) {}
+  constructor(private readonly monobankService: MonobankService) { }
 
-  @Get('jar')
-  async getJarData() {
+  @Get('update')
+  async triggerUpdate() {
     try {
-      const data = await this.monobankService.fetchJarData();
-      if (!data) {
-        throw new HttpException(
-          { error: 'Failed to fetch jar data' },
-          HttpStatus.SERVICE_UNAVAILABLE,
-        );
-      }
-      return data;
+      this.monobankService.updateAllJars(); // Run in background
+      return { message: 'Update triggered' };
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Unknown error';
       throw new HttpException(
-        { error: 'Failed to fetch monobank data', details: message },
+        { error: 'Failed to trigger update' },
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }

@@ -4,6 +4,9 @@ type JarListProps = {
     authorNickname: string;
     jarUrl: string;
     createdAt: string;
+    accumulated?: string | null;
+    goal?: string | null;
+    lastStatsUpdate?: string | null;
   }>;
   loading: boolean;
   onDelete: (id: string) => Promise<void>;
@@ -27,6 +30,9 @@ export default function JarList({ jars, loading, onDelete }: JarListProps) {
               <tr>
                 <th>Автор</th>
                 <th>Посилання на банку</th>
+                <th>Накопичено</th>
+                <th>Ціль</th>
+                <th>Оновлено</th>
                 <th>Дата додавання</th>
                 <th>Дії</th>
               </tr>
@@ -39,6 +45,16 @@ export default function JarList({ jars, loading, onDelete }: JarListProps) {
                     <a href={jar.jarUrl} target="_blank" rel="noreferrer">
                       {jar.jarUrl.substring(0, 40)}...
                     </a>
+                  </td>
+                  <td>{jar.accumulated ? `${jar.accumulated} ₴` : "null"}</td>
+                  <td>{jar.goal ? `${jar.goal} ₴` : "null"}</td>
+                  <td>
+                    {jar.lastStatsUpdate
+                      ? new Date(jar.lastStatsUpdate).toLocaleTimeString("uk-UA", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                      : "null"}
                   </td>
                   <td>{new Date(jar.createdAt).toLocaleDateString("uk-UA")}</td>
                   <td>
@@ -63,14 +79,29 @@ export default function JarList({ jars, loading, onDelete }: JarListProps) {
                   <p>{jar.authorNickname}</p>
                 </div>
                 <div className="card-field">
-                  <label>Посилання на банку</label>
+                  <label>Посилання</label>
                   <a href={jar.jarUrl} target="_blank" rel="noreferrer">
                     {jar.jarUrl.substring(0, 50)}...
                   </a>
                 </div>
                 <div className="card-field">
-                  <label>Дата додавання</label>
-                  <p>{new Date(jar.createdAt).toLocaleDateString("uk-UA")}</p>
+                  <label>Накопичено</label>
+                  <p>{jar.accumulated ? `${jar.accumulated} ₴` : "null"}</p>
+                </div>
+                <div className="card-field">
+                  <label>Ціль</label>
+                  <p>{jar.goal ? `${jar.goal} ₴` : "null"}</p>
+                </div>
+                <div className="card-field">
+                  <label>Оновлено</label>
+                  <p>
+                    {jar.lastStatsUpdate
+                      ? new Date(jar.lastStatsUpdate).toLocaleTimeString("uk-UA", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                      : "null"}
+                  </p>
                 </div>
                 <div className="card-actions">
                   <button

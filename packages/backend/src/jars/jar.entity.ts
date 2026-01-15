@@ -19,4 +19,13 @@ export class Jar {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  @Column({ nullable: true, type: 'text' })
+  accumulated?: string | null;
+
+  @Column({ nullable: true, type: 'text' })
+  goal?: string | null;
+
+  @Column({ nullable: true, type: 'timestamptz' })
+  lastStatsUpdate?: Date | null;
 }
