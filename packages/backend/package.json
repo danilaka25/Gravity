@@ -1,0 +1,50 @@
+{
+  "name": "@gravity/backend",
+  "version": "1.0.0",
+  "description": "Gravity NestJS Backend",
+  "main": "dist/main.js",
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "npm run build && node dist/main",
+    "start:dev": "concurrently \"npm run build:watch\" \"npm run serve:watch\"",
+    "build:watch": "tsc --watch",
+    "serve:watch": "nodemon",
+    "start:debug": "npm run build && node --inspect-brk dist/main",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.12",
+    "@nestjs/core": "^11.1.12",
+    "@nestjs/platform-express": "^11.1.12",
+    "@nestjs/schedule": "^6.1.0",
+    "@nestjs/typeorm": "^11.0.0",
+    "axios": "^1.13.2",
+    "cheerio": "^1.1.2",
+    "dotenv": "^16.4.5",
+    "jsdom": "^27.4.0",
+    "pg": "^8.17.1",
+    "puppeteer": "^24.35.0",
+    "puppeteer-core": "^24.35.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.15",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.8",
+    "concurrently": "^9.2.1",
+    "livereload": "^0.10.3",
+    "nodemon": "^3.1.11",
+    "ts-loader": "^9.5.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

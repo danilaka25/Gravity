@@ -1,0 +1,28 @@
+{
+  "name": "gravity",
+  "version": "1.0.0",
+  "description": "Gravity Monorepo - Monobank Jars Monitor",
+  "workspaces": [
+    "packages/backend",
+    "packages/frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm --prefix packages/backend run start:dev\" \"npm --prefix packages/frontend run dev\"",
+    "build": "npm --prefix packages/backend run build && npm --prefix packages/frontend run build",
+    "build:backend": "npm --prefix packages/backend run build",
+    "build:frontend": "npm --prefix packages/frontend run build",
+    "start": "npm --prefix packages/backend run start:prod",
+    "start:dev": "npm --prefix packages/backend run start:dev",
+    "lint": "npm --prefix packages/backend run lint && npm --prefix packages/frontend run lint",
+    "test": "npm --prefix packages/backend run test",
+    "test:watch": "npm --prefix packages/backend run test:watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
+
+
