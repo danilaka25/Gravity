@@ -12,12 +12,12 @@ type JarListProps = {
 export default function JarList({ jars, loading, onDelete }: JarListProps) {
   return (
     <div>
-      <h2>Все банки</h2>
-      {loading && <p className="loading">Загрузка...</p>}
+      <h2>Всі банки</h2>
+      {loading && <p className="loading">Завантаження...</p>}
 
       {jars.length === 0 ? (
         <div className="empty-state">
-          <p>Нет добавленных банок</p>
+          <p>Немає доданих банок</p>
         </div>
       ) : (
         <div className="jars-container">
@@ -26,9 +26,9 @@ export default function JarList({ jars, loading, onDelete }: JarListProps) {
             <thead>
               <tr>
                 <th>Автор</th>
-                <th>Ссылка на банку</th>
-                <th>Дата добавления</th>
-                <th>Действия</th>
+                <th>Посилання на банку</th>
+                <th>Дата додавання</th>
+                <th>Дії</th>
               </tr>
             </thead>
             <tbody>
@@ -46,7 +46,7 @@ export default function JarList({ jars, loading, onDelete }: JarListProps) {
                       className="btn-delete"
                       onClick={() => onDelete(jar.id)}
                     >
-                      Удалить
+                      Видалити
                     </button>
                   </td>
                 </tr>
@@ -63,13 +63,13 @@ export default function JarList({ jars, loading, onDelete }: JarListProps) {
                   <p>{jar.authorNickname}</p>
                 </div>
                 <div className="card-field">
-                  <label>Ссылка на банку</label>
+                  <label>Посилання на банку</label>
                   <a href={jar.jarUrl} target="_blank" rel="noreferrer">
                     {jar.jarUrl.substring(0, 50)}...
                   </a>
                 </div>
                 <div className="card-field">
-                  <label>Дата добавления</label>
+                  <label>Дата додавання</label>
                   <p>{new Date(jar.createdAt).toLocaleDateString("uk-UA")}</p>
                 </div>
                 <div className="card-actions">
@@ -77,7 +77,7 @@ export default function JarList({ jars, loading, onDelete }: JarListProps) {
                     className="btn-delete"
                     onClick={() => onDelete(jar.id)}
                   >
-                    Удалить
+                    Видалити
                   </button>
                 </div>
               </div>

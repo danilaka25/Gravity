@@ -10,18 +10,18 @@ type AddJarFormProps = {
 const schema = z.object({
   jarUrl: z
     .string()
-    .url("Неверная ссылка")
-    .min(1, "Ссылка обязательна")
+    .url("Невірне посилання")
+    .min(1, "Посилання обов'язкове")
     .refine(
       (val) => val.startsWith("https://send.monobank.ua"),
-      "Ссылка должна начинаться с https://send.monobank.ua"
+      "Посилання має починатися з https://send.monobank.ua"
     ),
   authorNickname: z
     .string()
-    .min(1, "Ник обязателен")
+    .min(1, "Нік обов'язковий")
     .regex(
-      /^[a-zA-Zа-яА-ЯёЁ]+$/,
-      "Ник автора только буквы рус и англ"
+      /^[a-zA-Zа-яА-ЯёЁїЇіІєЄґҐ]+$/,
+      "Нік автора тільки літери"
     ),
 });
 
@@ -50,10 +50,10 @@ export default function AddJarForm({ onAdd }: AddJarFormProps) {
 
   return (
     <div>
-      <h2>Добавить новую банку</h2>
+      <h2>Додати нову банку</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <div className="form-group">
-          <label htmlFor="jarUrl">Ссылка на банку Monobank</label>
+          <label htmlFor="jarUrl">Посилання на банку Monobank</label>
           <input
             id="jarUrl"
             type="text"
@@ -68,11 +68,11 @@ export default function AddJarForm({ onAdd }: AddJarFormProps) {
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="authorNickname">Ник автора</label>
+          <label htmlFor="authorNickname">Нік автора</label>
           <input
             id="authorNickname"
             type="text"
-            placeholder="Ваше имя или ник"
+            placeholder="Ваше ім'я або нік"
             {...register("authorNickname")}
             className={errors.authorNickname ? "error" : ""}
           />
@@ -83,7 +83,7 @@ export default function AddJarForm({ onAdd }: AddJarFormProps) {
           )}
         </div>
         <button type="submit" className="btn primary" disabled={loading}>
-          {loading ? "Добавляется..." : "Добавить банку"}
+          {loading ? "Додається..." : "Додати банку"}
         </button>
       </form>
     </div>

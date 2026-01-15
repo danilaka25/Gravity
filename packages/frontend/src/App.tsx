@@ -32,7 +32,7 @@ function App() {
       const data = await response.json();
       setJars(data);
     } catch (error) {
-      showMessage("Ошибка при загрузке данных", "error");
+      showMessage("Помилка при завантаженні даних", "error");
     } finally {
       setLoading(false);
     }
@@ -48,16 +48,16 @@ function App() {
 
       if (!response.ok) throw new Error("Failed to add jar");
 
-      showMessage("✅ Банка успешно добавлена!", "success");
+      showMessage("✅ Банку успішно додано!", "success");
       loadJars();
       setCurrentPage("home");
     } catch (error) {
-      showMessage("❌ Ошибка при добавлении банки", "error");
+      showMessage("❌ Помилка при додаванні банки", "error");
     }
   };
 
   const handleDeleteJar = async (id: string) => {
-    if (!confirm("Вы уверены?")) return;
+    if (!confirm("Ви впевнені?")) return;
 
     try {
       const response = await fetch(`${API_URL}/api/jars/${id}`, {
@@ -65,10 +65,10 @@ function App() {
       });
       if (!response.ok) throw new Error("Failed to delete jar");
 
-      showMessage("✅ Банка удалена", "success");
+      showMessage("✅ Банку видалено", "success");
       loadJars();
     } catch (error) {
-      showMessage("❌ Ошибка при удалении", "error");
+      showMessage("❌ Помилка при видаленні", "error");
     }
   };
 
@@ -83,20 +83,18 @@ function App() {
         <h1>🍯 Gravity - Monobank Jars Monitor</h1>
         <div className="nav">
           <button
-            className={`nav-btn ${
-              currentPage === "home" ? "active" : "inactive"
-            }`}
+            className={`nav-btn ${currentPage === "home" ? "active" : "inactive"
+              }`}
             onClick={() => setCurrentPage("home")}
           >
-            📊 Главная
+            📊 Головна
           </button>
           <button
-            className={`nav-btn ${
-              currentPage === "add" ? "active" : "inactive"
-            }`}
+            className={`nav-btn ${currentPage === "add" ? "active" : "inactive"
+              }`}
             onClick={() => setCurrentPage("add")}
           >
-            ➕ Добавить
+            ➕ Додати
           </button>
         </div>
       </div>
