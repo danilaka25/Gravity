@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LiveReloadMiddleware } from './livereload.middleware';
+import { MonobankModule } from './monobank/monobank.module';
 import { JarsModule } from './jars/jars.module';
 import { Jar } from './jars/jar.entity';
 
@@ -23,13 +24,9 @@ require('dotenv').config();
       ssl: true,
     }),
     ScheduleModule.forRoot(),
+    MonobankModule,
     JarsModule,
   ],
-  controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LiveReloadMiddleware).forRoutes('*');
-  }
-}
+export class AppModule { }

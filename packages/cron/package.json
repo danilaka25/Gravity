@@ -1,7 +1,7 @@
 {
-  "name": "@gravity/backend",
+  "name": "@gravity/cron",
   "version": "1.0.0",
-  "description": "Gravity NestJS Backend",
+  "description": "Gravity Cron Worker",
   "main": "dist/main.js",
   "scripts": {
     "prebuild": "tsc",
@@ -17,7 +17,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "postinstall": "npx puppeteer browsers install chrome"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.12",
@@ -30,6 +31,8 @@
     "dotenv": "^16.4.5",
     "jsdom": "^27.4.0",
     "pg": "^8.17.1",
+    "puppeteer": "^24.35.0",
+    "puppeteer-core": "^24.35.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "typeorm": "^0.3.28"

@@ -44,7 +44,6 @@ export class MonobankService {
     }
   }
 
-  @Cron(CronExpression.EVERY_10_MINUTES)
   async updateAllJars() {
     if (this.isUpdating) {
       this.logger.warn('Обновление уже запущено, пропускаем');

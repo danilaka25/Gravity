@@ -4,7 +4,8 @@
   "description": "Gravity Monorepo - Monobank Jars Monitor",
   "workspaces": [
     "packages/backend",
-    "packages/frontend"
+    "packages/frontend",
+    "packages/cron"
   ],
   "scripts": {
     "dev": "concurrently \"npm --prefix packages/backend run start:dev\" \"npm --prefix packages/frontend run dev\"",
@@ -24,5 +25,3 @@
     "concurrently": "^9.2.1"
   }
 }
-
-

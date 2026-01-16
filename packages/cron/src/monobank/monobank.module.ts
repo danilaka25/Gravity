@@ -10,6 +10,6 @@ import { Jar } from '../jars/jar.entity';
     TypeOrmModule.forFeature([Jar]),
   ],
   providers: [MonobankService],
-  controllers: [MonobankController],
+  exports: [MonobankService],
 })
 export class MonobankModule { }
